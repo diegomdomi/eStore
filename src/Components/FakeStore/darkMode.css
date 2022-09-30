@@ -1,0 +1,26 @@
+.dark {
+    background-color: #333;
+    color: #fff;
+  }
+  .light {
+    background-color:#e8edf0;
+    color: #333;
+  }
+
+  .dark .body-login {
+    background: #041612!important;
+    background: linear-gradient(90deg, rgba(51, 71, 67, 0.942) 0%, rgba(40, 46, 107, 0.992) 61%, rgb(56, 31, 38) 100%)!important ;
+    padding-left: 20px;
+    width: 100vw;
+    min-height: 100vh;
+}
+.dark nav{
+    background-color:#1f2e35!important
+}
+.dark .card .medium{
+    background-color: rgb(28 54 60 / 73%)!important;
+}
+
+.dark .card.horizontal{
+    background-color:#23242188!important;
+}

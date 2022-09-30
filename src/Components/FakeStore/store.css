@@ -1,0 +1,43 @@
+nav{
+    background-color:#29b6f6!important
+}
+.container{
+    padding-top:50px;
+} 
+
+.card:hover {
+    box-shadow: 5px 10px 20px 1px rgba(121, 89, 89, 0.74) !important;
+    transition: all 0.2s linear;
+    transform: scale(1.01);
+    cursor: pointer;
+  }
+ 
+  
+.card .card-image img {
+    padding: 20px;
+}
+
+
+.card .card-content .card-title {
+    font-size:15px;
+    font-weight:600;
+    color: black;
+    line-height: 17px!important
+}
+
+.card-content p {
+    display: flex;
+    align-self: flex-end;
+    font-size: 15px;
+    font-weight:bold;
+}
+
+.product{
+    padding-left:20px;
+}
+
+.product-price strong{
+    margin-left: 25px;
+    font-size: 20px;
+}
+
