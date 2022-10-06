@@ -27,8 +27,8 @@ const userLoged= userRegister.users.email
 
   return (
     <div className={`App ${theme}`}>
-      <nav>
-        <div className="nav-wrapper"  >
+      <nav >
+        <div className="nav-wrapper">
           <Link to="/store" className="brand-logo center">e-STorE</Link>
           <ul id="nav-mobile" className="left hide-on-med-and-down">
             <li><Link to="/store">Store</Link></li>

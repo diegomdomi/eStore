@@ -5,13 +5,20 @@
     width: 100vw;
     min-height: 100vh;
 }
-.loggin_page{
+.loggin_page {
     padding:25px;
     margin: 30px;
 }
-.title-login{
+.title-login {
     color: aliceblue;
     margin:1px;
     padding-top:20px;
     margin-left: 50px;
+}
+
+.input-field input {
+    color: rgba(248, 248, 248, 0.781);
+}
+#email { 
+    text-transform: lowercase;
 }

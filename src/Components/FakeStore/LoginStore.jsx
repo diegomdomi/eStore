@@ -1,6 +1,12 @@
 import React, { useContext,useState } from 'react'
 import Context from '../../Context/index'
 import "./loginStore.css"
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+
+import * as M from 'materialize-css';
 import {  useHistory } from 'react-router-dom'
 
 const LoginStore = () => {
@@ -17,62 +23,68 @@ const LoginStore = () => {
     const [registroPassword, setregistroPassword] = useState("")
     const [validacionPass, setValidacionPass] = useState(false)
     const [validacionEmail, setValidacionEmail] = useState(false)
+    const [checkEmail, setCheckEmail] = useState(false)
+    const [typePass, setTypePass] = useState(false)
 
 
     const handleInputChange = (e) => {
         if(e.target.name === "email"){
             const email = e.target.value
-            setEmail(email)
+            validateEmail(email)
+            setEmail(email.trim().toLowerCase())
         }
         if(e.target.name === "password"){
             const pass = e.target.value
-            setPassword(pass)
+            setPassword(pass.trim())
             // comprobarPass(pass)
         }
         if(e.target.name === "nuevoEmail"){
             const nuevoEmail = e.target.value
-            setregistroEmail(nuevoEmail)
+            validateEmail(nuevoEmail)
+            setregistroEmail(nuevoEmail.trim().toLowerCase())
 
         }
         if(e.target.name === "nuevoPassword"){
             const nuevoPassword = e.target.value
-            setregistroPassword(nuevoPassword)
+            setregistroPassword(nuevoPassword.trim())
             comprobarPass(nuevoPassword)
 
         }
     }
 
-    const userRegister = (e)=>{
-        e.preventDefault()
+    const userRegister = ()=>{
 
         let userLogin = {
             "email":registroEmail,
             "password": registroPassword
         }
-
         if(localStorage){
             let storage;
             if (!localStorage['storage']) storage = [];
             else storage = JSON.parse(localStorage['storage']);
             if (!(storage instanceof Array)) storage = [];
-            if((storage.find(user=>user.email === registroEmail))||(userLogin.password.length<5)){
+            if((storage.find(user=>user.email === registroEmail))||(!checkEmail)||(!userLogin.email)||(userLogin.password.length<5)){
                 setCliente(false)
                 alert("unavailable user")
-            } else if(!userLogin.email){
-                setValidacionEmail(false)
-            }else{
+            } 
+            // else if(!userLogin.email ){
+            //     setValidacionEmail(false)
+            //     alert("soy else if")}    
+            else{
                 setCliente(true)
                 storage.push(userLogin);
+                alert("fin de ciclo")
             }
-            
             localStorage.setItem('storage', JSON.stringify(storage));
-            
+            alert("salgo del else")
+            M.updateTextFields();
         }
     }
 
+
+
     
-    const user =(e)=>{
-        e.preventDefault()
+    const user =()=>{
 
         const getUsers= JSON.parse(localStorage.getItem('storage'))
         const mapeoEmail = getUsers.find(user => user.email === email)
@@ -88,78 +100,129 @@ const LoginStore = () => {
                     context.addUsers({email:usuarioLoged.email, password:usuarioLoged.password})
                     navigateTo( "/store" )
                 }else{
-                alert("user or password incorrect")
+                alert("user or password incorrect");
+                
             }
         }else{
             alert("user does not exist, please create an Account")
         }
-     
+        M.updateTextFields();
     }
 
-        const comprobarPass = (value) => {
-            if(value.length >= 5 && value.length !== null ){
-                setValidacionPass(true)
-            }else{
-                setValidacionPass(false)
-            }
-        }    
-    
- 
+     
+    const  filter = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const validateEmail = (value) => {
+        if(filter.test(value)){
+            setCheckEmail(true)
+        }else{
+            setCheckEmail(false)
+        }
+    }
+
+    const comprobarPass = (value) => {
+        if(value.length >= 5 && value.length !== null ){
+            setValidacionPass(true)
+        }else{
+            setValidacionPass(false)
+        }
+    }    
+
+    const showPass = () => {
+      setTypePass(!typePass)
+    }
+
+    const enviarForm = (e) => {
+        e.preventDefault();
+        e.target.reset();
+        M.updateTextFields();
+        setEmail("");    
+        setPassword(""); 
+        setregistroEmail("");
+        setregistroPassword("");
+    }
+
 return(
    
     <>
-        <div className="body-login">
-        <h4 className="title-login">User Login</h4>
+    <div className="body-login">
+        <h4 className="title-login">
+            User Login
+        </h4>
         <div className="loggin_page">
-            <form className="col s12">
-            <div className="row">
-            <div className="input-field col s4">
-                <input   name="email" type="email" className="validate" placeholder="your email..."
-                    onChange={handleInputChange}
-                />
-                <label className="active" for="email_inline">Email</label>
-                </div>
-                <div className="input-field col s4">
-                    <input  name="password" type="password" className="validate" placeholder="your password..."
-                    onChange={handleInputChange}
-                />
-                <label className="active" for="first_name2">Password</label>
-                </div>
-                <button  onClick={user} className="btn waves-effect waves-light" type="submit" name="action">Loggin</button>
+            <form className="col s12" onSubmit={enviarForm} >
+                <div className="row">
+                    <div className="input-field col s4">
+                        <input  id="email" name="email" type="email" className="validate" placeholder="your email..." autocomplete="off"
+                            onChange={handleInputChange} 
+                        />
+                        <label className="active" htmlFor="email_inline">Email</label>
+                        { email.length >= 1 && !checkEmail &&<small style={{color:"red", fontSize:"12px"}}>se espera un mail</small>}
+                    </div>
+
+                    <div className="input-field col s4" style={{position:"relative"}}>
+                        <input  name="password" type={typePass ? "text" : "password" } className="validate" placeholder="your password..." autocomplete="off"
+                        onChange={handleInputChange}
+                        />
+                        <label className="active" htmlFor="first_name2">Password</label>
+                    </div>
+                    <ul className="col" >
+                        {
+                            password.length > 0 
+                            && 
+                            <li style={{position: 'absolute',marginLeft:'-55px',marginTop:'17px' }}>
+                                <button onClick={showPass} style={{cursor:'pointer'}} type="button" disabled={!password}>
+                                    {typePass?<FontAwesomeIcon icon={faEyeSlash}/>:<FontAwesomeIcon icon={faEye}/>}
+                                </button>
+                            </li>
+                        }
+                        <li><button onClick={user} className="btn waves-effect waves-light btn-small " type="submit" name="action">Log in</button></li>
+                    </ul>
                 </div>
             </form>
         </div> 
 
 
 
-    <h4 className="title-login">New Account</h4>
-    <div className="loggin_page">
-            <form className="col s12">
-            <div className="row">
-            <div class="input-field col s4">
-                <input   name="nuevoEmail" type="email" class="validate" placeholder="your email..."
-                    onChange={handleInputChange}
-                />
-                <label class="active" for="email_inline">Email</label>
-
-                </div>
-            {(!cliente && registroEmail!=="")  &&<h5 style={{color:"red", fontSize:"16px"}}>the email is exists!</h5> } 
-            {((!validacionEmail || registroPassword==="") && !cliente) &&<h5 style={{color:"red", fontSize:"16px"}}>expected an email user!</h5> } 
-                <div class="input-field col s4">
-                <input  name="nuevoPassword" type="Password" class="validate" placeholder="your password..."
-                    onChange={handleInputChange}
-                />
-                <label class="active" for="first_name2">Password</label>
-                </div>
-                {!validacionPass && registroPassword.length >= 1 && <h5 style={{color:"red", fontSize:"16px"}}>Password must have more than 5 words</h5>}
-                <button  onClick={userRegister} class="btn waves-effect waves-light" type="submit" name="action">Loggin</button>
+        <h4 className="title-login">
+            New Account
+        </h4>
+        <div className="loggin_page">
+            <form className="col s12" onSubmit={enviarForm}>
+                <div className="row">
+                    <div className="input-field col s4">
+                        <input id="email"  name="nuevoEmail" type="email" className="validate" placeholder="your email..." autocomplete="off"
+                            onChange={handleInputChange}
+                        />
+                        <label className="active" htmlFor="email_inline">Email</label>
+                        {/* {(!cliente && registroEmail!=="")  &&<h5 style={{color:"red", fontSize:"16px"}}>the email is exists!</h5> } */}
+                        {/* { (registroEmail.length !== 0 && registroEmail.length >= 10) && !checkEmail &&<small style={{color:"red", fontSize:"14px"}}>se espera un mail</small>} */}
+                        {((!validacionEmail || registroPassword==="") && !cliente) &&<h5 style={{color:"red", fontSize:"16px"}}>expected an email user!</h5> } 
+                    </div>
+           
+                    <div className="input-field col s4">
+                        <input  name="nuevoPassword"type={typePass ? "text" : "password" } className="validate" placeholder="your password..." autocomplete="off"
+                            onChange={handleInputChange}
+                        />
+                        <label className="active" htmlFor="first_name2">Password</label>
+                        {!validacionPass && registroPassword.length >= 1 && <h5 style={{color:"red", fontSize:"16px"}}>Password must have more than 5 words</h5>}
+                    </div>
+                    <ul className="col" >
+                        {registroPassword.length > 0 && 
+                        <li style={{position: 'absolute',marginLeft:'-55px',marginTop:'17px' }}>
+                            <button onClick={showPass} style={{cursor:'pointer'}} type="button" disabled={!registroPassword} >
+                                {typePass?<FontAwesomeIcon icon={faEyeSlash}/>:<FontAwesomeIcon icon={faEye}/>}
+                            </button>
+                        </li>
+                    }
+                        <li>
+                            <button onClick={userRegister} className="btn waves-effect waves-light btn-small " type="submit" name="action">Sign in</button>
+                        </li>
+                    </ul>
                 </div>
             </form>
         </div> 
-
     </div>
     </>
-    
     )
 }
 
