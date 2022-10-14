@@ -27,7 +27,7 @@ useEffect(() => {
   return (
     <>
 
-    <div className= "col s12 m3" key={index}>
+    <div className= "col s12 m6 l3" key={index}>
         <div className="card" >
           <div className="card medium">
             <Link to={()=>abrirProducto(id,img,title,description,price,category)} >

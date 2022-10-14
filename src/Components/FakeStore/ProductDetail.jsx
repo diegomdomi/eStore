@@ -14,12 +14,12 @@ useEffect(() => {
   return (
     <>
    <div className="row product">
-    <div className="col s12 m7">
+    <div className="col s12 m6 l6">
       <h5 className="category">{category}</h5>
       <h4 className="header">{title}</h4>
       <div className="card horizontal">
         <div className="card-image">
-          <img src={img} style={{maxWidth:"250px"}} alt={{description}}/>
+          <img src={img} style={{maxWidth:"200px"}} alt={{description}}/>
         </div>
         <div className="card-stacked">
           <div className="card-content">

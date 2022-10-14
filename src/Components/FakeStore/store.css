@@ -1,6 +1,8 @@
 nav{
-    background-color:#29b6f6!important
+    background-color:#29b6f6!important;
 }
+    
+
 .container{
     padding-top:50px;
 } 
@@ -10,7 +12,7 @@ nav{
     transition: all 0.2s linear;
     transform: scale(1.01);
     cursor: pointer;
-  }
+}
  
   
 .card .card-image img {
@@ -41,3 +43,11 @@ nav{
     font-size: 20px;
 }
 
+
+@media(max-width: 320px){ 
+    .card.horizontal{
+        flex-direction: column;
+        align-items: baseline;
+
+    }
+}
