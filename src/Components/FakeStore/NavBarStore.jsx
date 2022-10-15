@@ -7,7 +7,6 @@ import  Context  from '../../Context/index'
 import { Link } from 'react-router-dom'
 import './darkMode.css'
 import './store.css'
-import * as M from 'materialize-css';
 
 const NavBarStore = () => {
   const [theme, setTheme] = useState('light');

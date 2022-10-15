@@ -10,6 +10,7 @@ import * as M from 'materialize-css';
 import {  useHistory } from 'react-router-dom'
 
 const LoginStore = () => {
+
     useEffect(() => {
         M.AutoInit();
       }, [])
@@ -38,7 +39,6 @@ const LoginStore = () => {
         if(e.target.name === "password"){
             const pass = e.target.value
             setPassword(pass.trim())
-            // comprobarPass(pass)
         }
         if(e.target.name === "nuevoEmail"){
             const nuevoEmail = e.target.value
@@ -150,7 +150,6 @@ const LoginStore = () => {
         setCliente(true)
     }
 
-   console.log(validacionEmail);
 
 return(
    
@@ -201,7 +200,7 @@ return(
             <form className="col s12" onSubmit={enviarForm}>
                 <div className="row">
                     <div className="input-field col s4">
-                        <input id="email"  name="nuevoEmail" type="email" className="validate" placeholder="your email..." autoComplete="off"
+                        <input id="nuevoEmail"  name="nuevoEmail" type="email" className="validate" placeholder="your email..." autoComplete="off"
                             onChange={handleInputChange}
                         />
                         <label className="active" htmlFor="email_inline">Email</label>

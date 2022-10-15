@@ -3,15 +3,11 @@ import { useLocation } from 'react-router-dom'
 import './store.css'
 
 const ProductDetail = () => {
- let location  = useLocation()
+
+  let location  = useLocation()
   const {title,img,description,price,category} = location.state
 
-  
-useEffect(() => {
-  console.log("soy detalle");
-
-})
-  return (
+   return (
     <>
    <div className="row product">
     <div className="col s12 m6 l6">

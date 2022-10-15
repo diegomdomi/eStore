@@ -19,7 +19,7 @@
 .input-field input {
     color: rgba(248, 248, 248, 0.781);
 }
-#email { 
+#email,#nuevoEmail{ 
     text-transform: lowercase;
 }
 

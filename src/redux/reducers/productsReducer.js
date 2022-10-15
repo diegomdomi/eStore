@@ -9,11 +9,11 @@ const products = (state= initialState.products,action) => {
     switch(action.type){
         case LOAD_PRODUCTS:
             return[...state];       
-            case ACTIONS_PRODUCTS.PRODUCTS:
-           state.push(action.products);
+        case ACTIONS_PRODUCTS.PRODUCTS:
+            state.push(action.products);
             return[...state];
-            default:
-                 return [...state];
+         default:
+            return [...state];
     }
 }
 export default products

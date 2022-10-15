@@ -44,7 +44,7 @@ nav{
 }
 
 
-@media(max-width: 320px){ 
+@media(max-width: 400px){ 
     .card.horizontal{
         flex-direction: column;
         align-items: baseline;

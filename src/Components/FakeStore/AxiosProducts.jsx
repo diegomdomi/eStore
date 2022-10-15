@@ -13,7 +13,6 @@ const AxiosProducts = () => {
 
   useEffect(() => {
     dispatch(loadProducts());
-    console.log("soy axios");
 },[])
 
 

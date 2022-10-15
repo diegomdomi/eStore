@@ -1,4 +1,4 @@
-import React,{ useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import './store.css'
 const Product = ({id,title,price,description,rating,img,index,category}) => {
@@ -20,10 +20,7 @@ const Product = ({id,title,price,description,rating,img,index,category}) => {
   }
 
   
-useEffect(() => {
-  console.log("soy producto");
 
-})
   return (
     <>
 

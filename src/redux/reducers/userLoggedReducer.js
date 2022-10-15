@@ -7,13 +7,10 @@ const initialState ={
 const userLogged = (state=initialState.userLogged, action) => {
     switch(action.type){
         case ACTIONS_MENSAJES.LOGGED:
-          // return !state;
-          // default:
-          //      return state
-                state.push(action.payload);
-                return[...state];
-            default:
-                 return [...state];
+              state.push(action.payload);
+              return[...state];
+        default:
+                return [...state];
     }
 
 }

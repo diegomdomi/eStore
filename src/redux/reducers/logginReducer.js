@@ -6,9 +6,9 @@ const initialState = {
 const isLoggin = (state = initialState.logged, action) =>{ 
     switch(action.type){
         case ACTIONS_MENSAJES.LOGGIN:
-              return !state;
-            default:
-                 return state
+            return !state;
+        default:
+            return state
     }
 
 }

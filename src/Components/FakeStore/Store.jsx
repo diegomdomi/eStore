@@ -4,7 +4,6 @@ import Product from './Product'
 import ModalFunc from './ModalFunc'
 
 const Store = ({products}) => {
-console.log("soy Store");
 
 const [modal,setModal] = useState(false)
 
