@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "deploy": "react-scripts build & firebase deploy"
+    "deploy": "serve -s build"
   },
   "eslintConfig": {
     "extends": [

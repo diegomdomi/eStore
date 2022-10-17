@@ -25,4 +25,7 @@
 
  ul li .buttons{
     border-radius: 15px;
+    background: #649a90;
+    background: -webkit-linear-gradient(24deg, #649a90 0%, #7848e0 100%);
+    background: linear-gradient(24deg, #649a90 0%, #7848e0 100%);
 }
