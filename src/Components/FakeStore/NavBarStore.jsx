@@ -7,6 +7,7 @@ import  Context  from '../../Context/index'
 import { Link } from 'react-router-dom'
 import './darkMode.css'
 import './store.css'
+import imagen from './img/logoCarro.png'
 
 const NavBarStore = () => {
   const [theme, setTheme] = useState('light');
@@ -30,7 +31,13 @@ const NavBarStore = () => {
     <div className={`App ${theme}`} >
       <nav >
         <div className="nav-wrapper">
-          <Link to="/store" className="brand-logo center">e-STorE</Link>
+        <Link to="/store" className="brand-logo center ">e-Store
+            <div className="brand-logo">
+              <img src={imagen}
+                style={{maxWidth:"40px", margin:"15px 0 0 5px"}}
+              />
+            </div>  
+          </Link>
           { userLoged && 
             <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li><Link to="/store">Store</Link></li>
@@ -42,8 +49,8 @@ const NavBarStore = () => {
                Hello! {userLoged}
             </li>
             <li  >
-              <button className="btn btn-primary" onClick={toggleTheme} style={{margin:"15px"}}>
-                {theme==="light" ? (<div><FontAwesomeIcon icon={faMoon}/></div>): (<div><FontAwesomeIcon icon={faSun}/></div>)}
+              <button className="btn btn-primary" onClick={toggleTheme} style={{margin:"10px",width:"30px",height:"30px",borderRadius:"50%"}}>
+                {theme==="light" ? (<div style={{margin:"-10px"}}><FontAwesomeIcon icon={faMoon}/></div>): (<div style={{margin:"-10px"}}><FontAwesomeIcon icon={faSun}/></div>)}
               </button>
             </li>
           </ul>
