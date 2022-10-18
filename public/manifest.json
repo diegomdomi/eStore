@@ -1,17 +1,25 @@
 {
-    "main.css": "/diegomdomi/eStore.git/static/css/main.aaae641d.chunk.css",
-    "main.js": "/diegomdomi/eStore.git/static/js/main.87327025.chunk.js",
-    "main.js.map": "/diegomdomi/eStore.git/static/js/main.87327025.chunk.js.map",
-    "runtime~main.js": "/diegomdomi/eStore.git/static/js/runtime~main.920ca6ed.js",
-    "runtime~main.js.map": "/diegomdomi/eStore.git/static/js/runtime~main.920ca6ed.js.map",
-    "static/css/2.4aab178a.chunk.css": "/diegomdomi/eStore.git/static/css/2.4aab178a.chunk.css",
-    "static/js/2.b60648e8.chunk.js": "/diegomdomi/eStore.git/static/js/2.b60648e8.chunk.js",
-    "static/js/2.b60648e8.chunk.js.map": "/diegomdomi/eStore.git/static/js/2.b60648e8.chunk.js.map",
-    "static/js/3.41c7b25b.chunk.js": "/diegomdomi/eStore.git/static/js/3.41c7b25b.chunk.js",
-    "static/js/3.41c7b25b.chunk.js.map": "/diegomdomi/eStore.git/static/js/3.41c7b25b.chunk.js.map",
-    "index.html": "/diegomdomi/eStore.git/index.html",
-    "precache-manifest.a94525e7fd28249abf1957ca3fca5ac2.js": "/diegomdomi/eStore.git/precache-manifest.a94525e7fd28249abf1957ca3fca5ac2.js",
-    "service-worker.js": "/diegomdomi/eStore.git/service-worker.js",
-    "static/css/2.4aab178a.chunk.css.map": "/diegomdomi/eStore.git/static/css/2.4aab178a.chunk.css.map",
-    "static/css/main.aaae641d.chunk.css.map": "/diegomdomi/eStore.git/static/css/main.aaae641d.chunk.css.map"
+    "short_name": "React App",
+    "name": "Create React App Sample",
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "logo192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "logo512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
   }
