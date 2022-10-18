@@ -10,7 +10,6 @@ const [modal,setModal] = useState(false)
 const changeState = () => {
   setModal(!modal)
 }
-console.log(modal);
 
 
   return (
