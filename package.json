@@ -1,6 +1,9 @@
 {
   "homepage": "https://github.com/diegomdomi/eStore.git",
   "name": "proyecto-reactjs",
+  "engines": {
+    "node": "16.13.2"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
